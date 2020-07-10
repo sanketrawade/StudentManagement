@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="content">
+    <h2><b>Login</b></h2>
+    <form class="form-group"  [formGroup]="LoginForm" (ngSubmit)="Login()">
+      <div class="fm-control">
+        <label><b>EmailId</b></label>
+      <input class="form-control"  type="email" formControlName="emailId">
+      <div class="error-msg" *ngIf="g.emailId.invalid && isSubmited">
+      <div  *ngIf="g.emailId.errors.required"><b>Please enter EmailId.</b></div>
+      <div *ngIf="!g.emailId.valid && !g.emailId.errors.required"><b>Please enter valid EmailId.</b></div>
+      </div>
+      </div>
+     <div class="fm-control">
+      <label><b>Password</b></label>
+      <input  class="form-control"  type="password" formControlName="password">
+      <div class="error-msg" *ngIf="g.password.invalid && isSubmited">
+        <div  *ngIf="g.password.errors.required"><b>Please enter Password.</b></div>
+      </div>
+     </div>
+      <div class="fm-control btn">
+        <button type="submit" [disabled]="!LoginForm.valid && isSubmited" class="btn btn-outline-info"><b>Login</b></button>
+      </div>
+      <div class="fm-control link">
+        <a class="fm-control link" [routerLink]="['/ForgetPassword']"><b>forget password</b></a>
+        <a class="fm-control link" [routerLink]="['/RegisterAs']"><b>new user?register</b></a>
+      </div>
+    </form>
+  </div>
+</div>

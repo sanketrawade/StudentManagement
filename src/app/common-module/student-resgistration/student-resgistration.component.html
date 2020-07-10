@@ -1,0 +1,205 @@
+<app-header [heading]="heading"></app-header>
+<div class="container">
+  <div class="content">
+    <form class="form-group"  [formGroup]="StudentRegistrationForm" (ngSubmit)="Register()">
+
+      <tabset #registerForm>
+        <tab heading="Personal Info" [disabled]="step1">
+
+          <div class="row">
+
+           <div class="fm-control">
+              <label><b>First Name</b></label>
+            <input class="form-control"  type="email" formControlName="firstName">
+            <div class="error-msg" *ngIf="g.firstName.invalid && isSubmited">
+            <div  *ngIf="g.firstName.errors.required"><b>Please enter First Name.</b></div>
+            </div>
+           </div>
+
+           <div class="fm-control">
+              <label><b>Last Name</b></label>
+              <input  class="form-control"  type="text" formControlName="lastName">
+              <div class="error-msg" *ngIf="g.lastName.invalid && isSubmited">
+                <div  *ngIf="g.lastName.errors.required"><b>Please enter Last Name.</b></div>
+              </div>
+           </div>
+
+           <div class="fm-control">
+              <label><b>EmailId</b></label>
+              <input  class="form-control"  type="email" formControlName="emailId">
+              <div class="error-msg" *ngIf="g.emailId.invalid && isSubmited">
+                <div  *ngIf="g.emailId.errors.required"><b>Please enter EmailId.</b></div>
+                <div  *ngIf="!g.emailId.valid && !g.emailId.errors.required"><b>Please enter valid EmailId.</b></div>
+              </div>
+           </div>
+
+          </div>
+
+          <div class="row">
+            <div class="fm-control">
+              <label><b>Mobile Number</b></label>
+              <input  class="form-control"  type="text" formControlName="mobileNumber">
+              <div class="error-msg" *ngIf="g.mobileNumber.invalid && isSubmited">
+                <div *ngIf="g.mobileNumber.errors.required"><b>Please enter Mobile Number.</b></div>
+                <div *ngIf="!g.mobileNumber.errors.valid && !g.mobileNumber.errors.required"><b>Please enter valid Mobile Number.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>Date Of Birth</b></label>
+              <input  class="form-control"  type="date" formControlName="dateOfBirth">
+              <div class="error-msg" *ngIf="g.dateOfBirth.invalid && isSubmited">
+                <div *ngIf="g.dateOfBirth.errors.required"><b>Please enter Date Of Birth.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>Address</b></label>
+              <textarea class="form-control"   formControlName="address"></textarea>
+              <div class="error-msg" *ngIf="g.address.invalid && isSubmited">
+                <div *ngIf="g.address.errors.required"><b>Please enter Address.</b></div>
+              </div>
+             </div>
+          </div>
+
+          <div class="row">
+            <div class="fm-control">
+              <label><b>Country</b></label>
+              <select class="form-control" formControlName="countryId">
+                <option disabled selected value="">Please select Country</option>
+                <option *ngFor="let country of countryList" [value]="country.Id">{{ country.name }}</option>
+              </select>
+              <div class="error-msg" *ngIf="g.countryId.invalid && isSubmited">
+                <div  *ngIf="g.countryId.errors.required"><b>Please select Country.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>State</b></label>
+              <select class="form-control" formControlName="stateId">
+                <option disabled selected value="">Please select State</option>
+                <option *ngFor="let state of stateList" [value]="state.Id">{{ state.name }}</option>
+              </select>
+              <div class="error-msg" *ngIf="g.stateId.invalid && isSubmited">
+                <div  *ngIf="g.stateId.errors.required"><b>Please select State.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>City</b></label>
+              <select class="form-control" formControlName="cityId">
+                <option disabled selected value="">Please select City</option>
+                <option *ngFor="let city of cityList" [value]="city.Id">{{ city.name }}</option>
+              </select>
+              <div class="error-msg" *ngIf="g.cityId.invalid && isSubmited">
+                <div *ngIf="g.cityId.errors.required"><b>Please select City.</b></div>
+              </div>
+             </div>
+          </div>
+
+         <div class="fm-control btn">
+          <button type="button" (click)="ChangeTab(1)" class="btn btn-outline-danger"><b>Next</b></button>
+        </div>
+        </tab>
+        <tab heading="Student Info"  [disabled]="step2">
+          <div class="row">
+            <div class="fm-control">
+              <label><b>Father First Name</b></label>
+              <input  class="form-control"  type="text" formControlName="fatherFirstName">
+              <div class="error-msg" *ngIf="g.fatherFirstName.invalid && isSubmited">
+                <div *ngIf="g.fatherFirstName.errors.required"><b>Please enter Father First Name.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>Father Last Name</b></label>
+              <input  class="form-control"  type="text" formControlName="fatherLastName">
+              <div class="error-msg" *ngIf="g.fatherLastName.invalid && isSubmited">
+                <div *ngIf="g.fatherLastName.errors.required"><b>Please enter Father Last Name.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>Father Mobile Number</b></label>
+              <input  class="form-control"  type="text" formControlName="fatherMobileNumber">
+              <div class="error-msg" *ngIf="g.fatherMobileNumber.invalid && isSubmited">
+                <div *ngIf="g.fatherMobileNumber.errors.required"><b>Please enter Father Mobile Number.</b></div>
+              </div>
+             </div>
+
+          </div>
+          <div class="row">
+             <div class="fm-control">
+              <label><b>Mother First Name</b></label>
+              <input  class="form-control"  type="text" formControlName="motherFirstName">
+              <div class="error-msg" *ngIf="g.motherFirstName.invalid && isSubmited">
+                <div *ngIf="g.motherFirstName.errors.required"><b>Please enter Mother First Name.</b></div>
+              </div>
+             </div>
+             <div class="fm-control">
+              <label><b>Mother Last Name</b></label>
+              <input  class="form-control"  type="text" formControlName="motherLastName">
+              <div class="error-msg" *ngIf="g.motherLastName.invalid && isSubmited">
+                <div *ngIf="g.motherLastName.errors.required"><b>Please enter Mother Last Name.</b></div>
+              </div>
+             </div>
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <div class="fm-control btn">
+      <button type="button" (click)="Back(0)" class="btn btn-outline-danger"><b>Back</b></button>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="fm-control btn">
+      <button type="button" (click)="ChangeTab(2)" class="btn btn-outline-danger"><b>Next</b></button>
+    </div>
+  </div>
+
+</div>
+
+        </tab>
+        <tab heading="Documents" [disabled]="step3">
+          <div class="row">
+            <div class="col-6">
+              <div class="file-box">
+                <div class="img-control">
+                  <label><b>Birth Certificate</b></label>
+                  <input  class="form-control"  accept=".*"  type="file" formControlName="birthCerificate">
+                  <div class="error-msg" *ngIf="g.birthCerificate.invalid && isSubmited">
+                    <div *ngIf="g.birthCerificate.errors.required"><b>Please select Birth Certificate.</b></div>
+                  </div>
+                 </div>
+              </div>
+            </div>
+
+           <div class="col-6">
+            <div class="file-box">
+              <img *ngIf="imageUrl!=null" [src]="imageUrl">
+              <div class="img-control">
+                <label><b>Profile Image</b></label>
+                <label class="label label-default" for="">{{ profileImageName }}</label>
+                <div class="error-msg" *ngIf="g.photo.invalid && isSubmited">
+                  <div *ngIf="g.photo.errors.required"><b>Please select Profile Image.</b></div>
+                </div>
+               </div>
+            </div>
+            <div style="margin-left: 80px;">
+              <input  class="form-control" (change)="changes($event.target.files)"  type="file" formControlName="fatherMobileNumber">
+            </div>
+           </div>
+
+          </div>
+          <div class="row">
+         <div class="col-6">
+          <div class="fm-control btn">
+            <button type="submit" [disabled]="!StudentRegistrationForm.valid && isSubmited" class="btn btn-outline-info"><b>Register</b></button>
+          </div>
+         </div>
+          <div class="col-6">
+            <div class="fm-control btn">
+              <button type="button" (click)="Back(1)" class="btn btn-outline-danger"><b>Back</b></button>
+            </div>
+          </div>
+          </div>
+        </tab>
+      </tabset>
+    </form>
+  </div>
+</div>
