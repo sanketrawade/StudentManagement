@@ -4,7 +4,7 @@
     <form class="form-group"  [formGroup]="LoginForm" (ngSubmit)="Login()">
       <div class="fm-control">
         <label><b>EmailId</b></label>
-      <input class="form-control"  type="email" formControlName="emailId">
+      <input class="form-control" placeholder="enter username"  type="email" formControlName="emailId">
       <div class="error-msg" *ngIf="g.emailId.invalid && isSubmited">
       <div  *ngIf="g.emailId.errors.required"><b>Please enter EmailId.</b></div>
       <div *ngIf="!g.emailId.valid && !g.emailId.errors.required"><b>Please enter valid EmailId.</b></div>
@@ -12,7 +12,7 @@
       </div>
      <div class="fm-control">
       <label><b>Password</b></label>
-      <input  class="form-control"  type="password" formControlName="password">
+      <input  class="form-control" placeholder="enter password"  type="password" formControlName="password">
       <div class="error-msg" *ngIf="g.password.invalid && isSubmited">
         <div  *ngIf="g.password.errors.required"><b>Please enter Password.</b></div>
       </div>

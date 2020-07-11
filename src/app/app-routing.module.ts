@@ -2,39 +2,34 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './common-module/login/login.component';
-import { ForgetPasswordComponent } from './common-module/forget-password/forget-password.component';
-import { RegisterAsComponent } from './common-module/register-as/register-as.component';
-import { StudentResgistrationComponent } from './common-module/student-resgistration/student-resgistration.component';
 
 
 const routes: Routes = [
 {
   path:'',
-  redirectTo:'/Login',
+  redirectTo:'/ogin',
   pathMatch:'full'
 },
 {
-  path:'Login',
-  component:LoginComponent
+  path:'login',
+  loadChildren:'./core/core.module#CoreModule'
 },
 {
-  path:'ForgetPassword',
-  component:ForgetPasswordComponent
+  path:'Student',
+  loadChildren:'./student/student.module#StudentModule'
 },
 {
-  path:'RegisterAs',
-  component:RegisterAsComponent
+  path:'Teacher',
+  loadChildren:'./teacher/teacher.module#TeacherModule'
 },
 {
-  path:'Register-Stduent',
-  component:StudentResgistrationComponent
+  path:'Admin',
+  loadChildren:'./admin/admin.module#AdminModule'
 }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule,CommonModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

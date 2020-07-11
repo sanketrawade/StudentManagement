@@ -15,9 +15,11 @@ export class RegisterAsComponent implements OnInit {
   }
 
   RegisterStudent(){
-    this.router.navigate(['/Register-Stduent']);
+    this.router.navigate(['Register-Student']);
   }
-
+  RegisterTeacher(){
+    this.router.navigate(['Register-Teacher']);
+  }
 
 
 }

@@ -1,16 +1,15 @@
-<app-header [heading]="heading"></app-header>
+<app-header [heading]="header"></app-header>
+
 <div class="container">
   <div class="content">
-    <form class="form-group"  [formGroup]="StudentRegistrationForm" (ngSubmit)="Register()">
+    <form class="form-group"  [formGroup]="TeacherRegistrationFormGroup" (ngSubmit)="Register()">
 
-      <tabset #registerForm>
-        <tab heading="Personal Info" [disabled]="step1">
-
+      <tabset #teacherRegisterForm>
+        <tab heading="Personal Info" >
           <div class="row">
-
            <div class="fm-control">
               <label><b>First Name</b></label>
-            <input class="form-control"  type="email" formControlName="firstName">
+            <input class="form-control"  type="text" formControlName="firstName">
             <div class="error-msg" *ngIf="g.firstName.invalid && isSubmited">
             <div  *ngIf="g.firstName.errors.required"><b>Please enter First Name.</b></div>
             </div>
@@ -53,7 +52,7 @@
              </div>
              <div class="fm-control">
               <label><b>Address</b></label>
-              <textarea class="form-control"   formControlName="address"></textarea>
+              <textarea class="form-control" formControlName="address"></textarea>
               <div class="error-msg" *ngIf="g.address.invalid && isSubmited">
                 <div *ngIf="g.address.errors.required"><b>Please enter Address.</b></div>
               </div>
@@ -94,68 +93,10 @@
           </div>
 
          <div class="fm-control btn">
-          <button type="button" (click)="ChangeTab(1)" class="btn btn-outline-danger"><b>Next</b></button>
+          <button type="button" (click)="ChangeTab(2)" class="btn btn-outline-danger"><b>Next</b></button>
         </div>
         </tab>
-        <tab heading="Student Info"  [disabled]="step2">
-          <div class="row">
-            <div class="fm-control">
-              <label><b>Father First Name</b></label>
-              <input  class="form-control"  type="text" formControlName="fatherFirstName">
-              <div class="error-msg" *ngIf="g.fatherFirstName.invalid && isSubmited">
-                <div *ngIf="g.fatherFirstName.errors.required"><b>Please enter Father First Name.</b></div>
-              </div>
-             </div>
-             <div class="fm-control">
-              <label><b>Father Last Name</b></label>
-              <input  class="form-control"  type="text" formControlName="fatherLastName">
-              <div class="error-msg" *ngIf="g.fatherLastName.invalid && isSubmited">
-                <div *ngIf="g.fatherLastName.errors.required"><b>Please enter Father Last Name.</b></div>
-              </div>
-             </div>
-             <div class="fm-control">
-              <label><b>Father Mobile Number</b></label>
-              <input  class="form-control"  type="text" formControlName="fatherMobileNumber">
-              <div class="error-msg" *ngIf="g.fatherMobileNumber.invalid && isSubmited">
-                <div *ngIf="g.fatherMobileNumber.errors.required"><b>Please enter Father Mobile Number.</b></div>
-              </div>
-             </div>
-
-          </div>
-          <div class="row">
-             <div class="fm-control">
-              <label><b>Mother First Name</b></label>
-              <input  class="form-control"  type="text" formControlName="motherFirstName">
-              <div class="error-msg" *ngIf="g.motherFirstName.invalid && isSubmited">
-                <div *ngIf="g.motherFirstName.errors.required"><b>Please enter Mother First Name.</b></div>
-              </div>
-             </div>
-             <div class="fm-control">
-              <label><b>Mother Last Name</b></label>
-              <input  class="form-control"  type="text" formControlName="motherLastName">
-              <div class="error-msg" *ngIf="g.motherLastName.invalid && isSubmited">
-                <div *ngIf="g.motherLastName.errors.required"><b>Please enter Mother Last Name.</b></div>
-              </div>
-             </div>
-</div>
-
-<div class="row">
-  <div class="col-6">
-    <div class="fm-control btn">
-      <button type="button" (click)="Back(0)" class="btn btn-outline-danger"><b>Back</b></button>
-    </div>
-  </div>
-
-  <div class="col-6">
-    <div class="fm-control btn">
-      <button type="button" (click)="ChangeTab(2)" class="btn btn-outline-danger"><b>Next</b></button>
-    </div>
-  </div>
-
-</div>
-
-        </tab>
-        <tab heading="Documents" [disabled]="step3">
+        <tab heading="Teacher Details">
           <div class="row">
             <div class="col-6">
               <div class="file-box">
@@ -186,10 +127,10 @@
            </div>
 
           </div>
-          <div class="row">
+          <!--<div class="row">
          <div class="col-6">
           <div class="fm-control btn">
-            <button type="submit" [disabled]="!StudentRegistrationForm.valid && isSubmited" class="btn btn-outline-info"><b>Register</b></button>
+            <button type="submit" [disabled]="!TeacherRegistrationFormGroup.valid && isSubmited" class="btn btn-outline-info"><b>Register</b></button>
           </div>
          </div>
           <div class="col-6">
@@ -197,7 +138,7 @@
               <button type="button" (click)="Back(1)" class="btn btn-outline-danger"><b>Back</b></button>
             </div>
           </div>
-          </div>
+          </div>-->
         </tab>
       </tabset>
     </form>
